@@ -1,0 +1,202 @@
+@charset "utf-8";
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* reset end */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --transition: 0.3s; 
+    /* 속성 변경시 애니메이션 속도 조절 */
+}
+
+.wrap {
+    width: 100vw;
+    height: 100vh;
+    min-height: 580px;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    overflow-y: auto;
+}
+
+.wrap h1 {
+    margin-top: -20px;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    font-weight: 600;
+    background-color: #333;
+    padding: 10px 10px;
+    color: #fff;
+
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: minmax(3em, auto);
+    grid-gap: 0.5em;
+    width: 100%;
+    min-height: 480px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 2em;
+    background-color: #fafafa;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.8em;
+    height: 4.8em;
+    margin: 0 auto;
+    background-color: #333;
+    cursor: pointer;
+    color: #fff;
+    transform: rotateX(-180deg);
+    transition: var(--transition);
+}
+
+.card .front {
+    position: absolute;
+    font-size: 2em;
+    opacity: 1;
+    visibility: visible;
+    transform: rotateX(180deg);
+    pointer-events: none;
+}
+
+.card.card.flip .front {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.card.on {
+    background-color: rgb(82, 214, 247);
+}
+
+.card.match {
+    background-color: #12c940;
+    pointer-events: none;
+}
+
+.card.nonmatch {
+    background-color: #f51b63;
+}
+
+.card .icon {
+    font-size: 2em;
+    opacity: 0;
+    visibility: hidden;
+    transform: rotateX(180deg);
+}
+
+.card.flip,
+.card.flip .icon {
+    opacity: 1;
+    visibility: visible;
+    transform: rotateX(0);
+    pointer-events: none;
+}
+
+.utility {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #efefef;
+}
+
+.utility .boxes {
+    display: flex;
+    align-items: center;
+    width: 180px;
+    justify-content: space-between;
+}
+
+.utility .js-play, .js-sendLink {
+    width: 80px;
+    height: 30px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.utility .js-play:hover, .js-sendLink:hover {
+    background-color: #fff;
+    border: 1px solid #333;
+    color: #333;
+}
+
+.link-area .label { 
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.js-sendLink {
+    width: 160px;
+    margin: 10px 0;
+}
